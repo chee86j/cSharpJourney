@@ -1,0 +1,62 @@
+# Visual Studio / .NET Build artifacts
+bin/
+obj/
+out/
+
+# NuGet Packages
+*.nupkg
+*.snupkg
+packages/
+.nuget/
+
+# Visual Studio Code
+.vscode/
+launch.json
+tasks.json
+
+# User-specific files
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+*.sln.metaproj
+
+# Logs
+*.log
+
+# Debugging
+*.pdb
+*.opendb
+*.VC.db
+
+# Rider / JetBrains IDE
+.idea/
+*.iml
+*.dotCover
+*.sln.iml
+
+# macOS specific
+.DS_Store
+
+# Windows specific
+Thumbs.db
+Desktop.ini
+
+# Coverage Reports
+TestResults/
+*.coverage
+*.coveragexml
+*.codecov
+coverage/
+
+# Resharper files
+*.DotSettings.user
+
+# Publish Outputs
+publish/
+app.publish/
+
+# Build and CI
+*.vs/
+*.vscode/
+temp/
