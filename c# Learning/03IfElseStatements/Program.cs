@@ -1,94 +1,98 @@
 ﻿/*
-    This code snippet is a practice of the if-else statements in C#.
-    Requirements:
-        1. A random number generator is used to generate a random number between 0 and 11.
-        2. The random number generated is stored in the variable 'daysUntilExpiration'.
-        3. The variable 'discountPercentage' is initialized to 0.
-        4. The code block checks the value of 'daysUntilExpiration' using if-else statements.
-        5. If 'daysUntilExpiration' is 0, the code block prints "Your subscription has expired."
-        6. If 'daysUntilExpiration' is 1, the code block prints "Your subscription expires within a day!" and sets 'discountPercentage' to 20.
-        7. If 'daysUntilExpiration' is less than or equal to 5, the code block prints "Your subscription expires in {daysUntilExpiration} days." and sets 'discountPercentage' to 10.
-        8. If 'daysUntilExpiration' is less than or equal to 10, the code block prints "Your subscription will expire soon. Renew now!"
-        9. Additionally if 'discountPercentage' is greater than 0, the code block prints "Renew now and save {discountPercentage}%."
-        This appears as an additional message if the subscription is about to expire.
+C# just like JavaScript has if else statements. In this example, we are going to create a simple dice game. 
+The game will roll three dice and add the total. If the total is greater than 14, the player wins. 
+If the total is less than 15, the player loses. 
+
+IF / ELSE STATEMENTS 
+If the condition is true, the code inside the if statement will run.
+If the condition is false, the code inside the else statement will run.
+i.e. 
+        if (condition)
+        {
+            // code to run if condition is true
+        }
+        else
+        {
+            // code to run if condition is false
+        }
+
+MATHEMATICAL OPERATORS - C# supports the following mathematical operators:
+        '+' is the addition operator
+        '-' is the subtraction operator
+        '*' is the multiplication operator
+        '/' is the division operator
+        '%' is the modulus operator
+        '++' is the increment operator
+        '--' is the decrement operator
+        '+=', '-=', '*=', '/=' are compound assignment operators
+
+BOOLEAN EXPRESSIONS - A boolean expression is a statement that can be either true or false.
+i.e. 
+        bool isTrue = true;
+        bool isFalse = false;                                            *Note: there is no '===' in C#
+        '=' is an assignment operator    '==' is a comparison operator    Use Equals() method to compare strings
+        '!=' is a not equal operator
+        '>' is greater than              '<' is less than
+        '>=' is greater than or equal to '<=' is less than or equal to
+
+LOGICAL OPERATORS - Logical operators are used to combine multiple boolean expressions.
+i.e. 
+        '&&' is the AND operator
+        '||' is the OR operator
+        '!' is the NOT operator
+
+A Code Block is a group of statements that are enclosed in curly braces '{}'.
+Note: A Boolean expression is made up of 3 parts: 
+        1. The 'if' keyword
+        2. A boolean expression inside parentheses '()'
+        3. A code block inside curly braces '{}'
 */
 
-using System;
+Random dice = new Random();
 
-public class Program
+int roll1 = dice.Next(1, 7);
+int roll2 = dice.Next(1, 7);
+int roll3 = dice.Next(1, 7);
+
+int total = roll1 + roll2 + roll3;
+
+Console.WriteLine($"Dice roll: {roll1} + {roll2} + {roll3} = {total}");
+
+if ((roll1 == roll2) || (roll2 == roll3) || (roll1 == roll3))
 {
-    public static void Main()
+    if ((roll1 == roll2) && (roll2 == roll3))
     {
-        Random random = new Random();
-        int daysUntilExpiration = random.Next(12);
-        int discountPercentage = 0;
-
-        if (daysUntilExpiration == 0)
-        {
-            Console.WriteLine("Your subscription has expired.");
-        }
-        else if (daysUntilExpiration == 1)
-        {
-            Console.WriteLine("Your subscription expires within a day!");
-            discountPercentage = 20;
-        }
-        else if (daysUntilExpiration <= 5)
-        {
-            Console.WriteLine($"Your subscription expires in {daysUntilExpiration} days.");
-            discountPercentage = 10;
-        }
-        else if (daysUntilExpiration <= 10)
-        {
-            Console.WriteLine("Your subscription will expire soon. Renew now!");
-        }
-
-        // Combine discount check and message into a single condition
-        if (discountPercentage > 0)
-            Console.WriteLine($"Renew now and save {discountPercentage}%.");
+        Console.WriteLine("You rolled triples!  +6 bonus to total!");
+        total += 6;
     }
+    else
+    {
+        Console.WriteLine("You rolled doubles!  +2 bonus to total!");
+        total += 2;
+    }
+
+    Console.WriteLine($"Your total including the bonus: {total}");
 }
 
-/*
-    If / Else / Else If Statements in C#:
-    - If statements are used to execute a block of code if a condition is true.
-    - Else statements are used to execute a block of code if the same condition is false.
-    - Else If statements are used to specify a new condition to test if the first condition is false.
-    - We can also nest if-else statements to check multiple conditions.
-*/
-
-
-/*
-This Solution can be further optimized by using Switch (Expressions) which we will learn later on:
-
-using System;
-
-public class Program
+if (total >= 16)
 {
-    public static void Main()
-    {
-        Random random = new Random();
-        int daysUntilExpiration = random.Next(12);
-
-        int discountPercentage = daysUntilExpiration switch
-        {
-            0 => PrintAndReturn("Your subscription has expired.", 0),
-            1 => PrintAndReturn("Your subscription expires within a day!", 20),
-            <= 5 => PrintAndReturn($"Your subscription expires in {daysUntilExpiration} days.", 10),
-            <= 10 => PrintAndReturn("Your subscription will expire soon. Renew now!", 0),
-            _ => 0
-        };
-
-        if (discountPercentage > 0)
-            Console.WriteLine($"Renew now and save {discountPercentage}%.");
-    }
-
-    // Helper method for printing and returning a value
-    private static int PrintAndReturn(string message, int discount)
-    {
-        Console.WriteLine(message);
-        return discount;
-    }
+    Console.WriteLine("You win a new car!");
+}
+else if (total >= 10)
+{
+    Console.WriteLine("You win a new laptop!");
+}
+else if (total == 7)
+{
+    Console.WriteLine("You win a trip for two!");
+}
+else
+{
+    Console.WriteLine("You win a kitten!");
 }
 
-*/
 
+
+/*
+Nesting has now been included in the code. Nesting is when you place an if statement inside another if statement.
+*/
