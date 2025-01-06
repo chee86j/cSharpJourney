@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\jeffr\\Downloads\\cSharpJourney\\c# Learning\\01Parameters\\01Parameters.csproj": {}
+    "C:\\Users\\JChee\\Documents\\cSharpJourney\\c# Learning\\01Parameters\\01Parameters.csproj": {}
   },
   "projects": {
-    "C:\\Users\\jeffr\\Downloads\\cSharpJourney\\c# Learning\\01Parameters\\01Parameters.csproj": {
+    "C:\\Users\\JChee\\Documents\\cSharpJourney\\c# Learning\\01Parameters\\01Parameters.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\jeffr\\Downloads\\cSharpJourney\\c# Learning\\01Parameters\\01Parameters.csproj",
+        "projectUniqueName": "C:\\Users\\JChee\\Documents\\cSharpJourney\\c# Learning\\01Parameters\\01Parameters.csproj",
         "projectName": "01Parameters",
-        "projectPath": "C:\\Users\\jeffr\\Downloads\\cSharpJourney\\c# Learning\\01Parameters\\01Parameters.csproj",
-        "packagesPath": "C:\\Users\\jeffr\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\jeffr\\Downloads\\cSharpJourney\\c# Learning\\01Parameters\\obj\\",
+        "projectPath": "C:\\Users\\JChee\\Documents\\cSharpJourney\\c# Learning\\01Parameters\\01Parameters.csproj",
+        "packagesPath": "C:\\Users\\JChee\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\JChee\\Documents\\cSharpJourney\\c# Learning\\01Parameters\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\jeffr\\AppData\\Roaming\\NuGet\\NuGet.Config"
+          "C:\\Users\\JChee\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net9.0"
