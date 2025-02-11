@@ -150,27 +150,27 @@ will then be used to add new elements to the array.
 */
 
 //-----Resize an Array to Add New Elements-----
-string[] pallets = ["B14", "A11", "B12", "A13"];
-Console.WriteLine("");
+// string[] pallets = ["B14", "A11", "B12", "A13"];
+// Console.WriteLine("");
 
-Array.Clear(pallets, 0, 2);
-Console.WriteLine($"Clearing 2 ... count: {pallets.Length}");
-foreach (var pallet in pallets)
-{
-    Console.WriteLine($"-- {pallet}");
-}
+// Array.Clear(pallets, 0, 2);
+// Console.WriteLine($"Clearing 2 ... count: {pallets.Length}");
+// foreach (var pallet in pallets)
+// {
+//     Console.WriteLine($"-- {pallet}");
+// }
 
-Console.WriteLine("");
-Array.Resize(ref pallets, 6);
-Console.WriteLine($"Resizing 6 ... count: {pallets.Length}");
+// Console.WriteLine("");
+// Array.Resize(ref pallets, 6);
+// Console.WriteLine($"Resizing 6 ... count: {pallets.Length}");
 
-pallets[4] = "C01";
-pallets[5] = "C02";
+// pallets[4] = "C01";
+// pallets[5] = "C02";
 
-foreach (var pallet in pallets)
-{
-    Console.WriteLine($"-- {pallet}");
-}
+// foreach (var pallet in pallets)
+// {
+//     Console.WriteLine($"-- {pallet}");
+// }
 
 /*
 Expected Output:
@@ -264,3 +264,50 @@ through each element in the original array and copy non-null values into the new
 ----JavaScript arrays are dynamic, so resizing is done via modifying length, slice(), 
     or push().
 ----New elements in C# default to 0 or null, while JavaScript defaults to undefined.
+
+
+
+/* ----------C# String Manipulation with Split() and Join()----------
+You can split, manipulate, and recombine strings using C# methods lik
+ToCharArray(), Reverse(), Join(), and Split(). 
+
+ Key String & Array Methods in C#
+1️⃣ Convert a String to a Character Array (ToCharArray())
+
+Converts a string into an array of individual characters.
+Example: "abc123".ToCharArray() → ['a', 'b', 'c', '1', '2', '3']
+2️⃣ Reverse the Character Array (Array.Reverse())
+
+Rearranges characters backward.
+Example: ['a', 'b', 'c'] → ['c', 'b', 'a']
+3️⃣ Join the Array into a Comma-Separated String (String.Join())
+
+Converts an array back to a string, adding a separator (,).
+Example: ['c', 'b', 'a'] → "c,b,a"
+4️⃣ Split the String Back into an Array (Split())
+
+Splits a string into an array of substrings based on a delimiter.
+Example: "c,b,a".Split(',') → ['c', 'b', 'a']
+*/
+
+/* ----------Code Walkthrough----------*/
+string value = "abc123";
+char[] valueArray = value.ToCharArray(); // Convert string to char array
+Array.Reverse(valueArray); // Reverse the array
+
+// Join characters with a comma separator
+string result = String.Join(",", valueArray);
+Console.WriteLine(result); // Output: 3,2,1,c,b,a
+
+// Split the string back into an array using the comma
+string[] items = result.Split(',');
+foreach (string item in items)
+{
+    Console.WriteLine(item); // Outputs: 3 2 1 c b a (one per line)
+}
+
+/* ----------Key Takeaways----------
+✔ Use ToCharArray() & Split() to break a string into smaller parts.
+✔ Use Join() to combine an array into a single string.
+✔ Use Reverse() to manipulate data before recombining it.
+*/
