@@ -8,6 +8,7 @@ you would likely need to combine data of different types, including fractional v
 and percentages in precise ways.
 */
 
+/* ----Solution----
 int invoiceNumber = 1201;
 decimal productShares = 25.4568m;
 decimal subtotal = 2750.00m;
@@ -19,6 +20,7 @@ Console.WriteLine($"   Shares: {productShares:N3} Product");
 Console.WriteLine($"     Subtotal: {subtotal:C}");
 Console.WriteLine($"       Tax: {taxPercentage:P2}");
 Console.WriteLine($"     Total Billed: {total:C}");
+*/
 
 /*
 Output:
@@ -29,11 +31,13 @@ Invoice Number: 1201
      Total Billed: $3,185.19
 */
 
-// Discover Padding and Alignment
+/* ----Solution----
+Discover Padding and Alignment
 string first = "Hello";
 string second = "World";
 string result = string.Format("{0} {1}!", first, second);
 Console.WriteLine(result);
+*/
 
 /*
 Output:
@@ -64,9 +68,11 @@ of characters equals the argument you send it. In this case, you want the total 
 to be 12 characters.
 */
 
+/* ----Solution----
 string input = "Pad this";
 Console.WriteLine(input.PadLeft(12, '-'));
 Console.WriteLine(input.PadRight(12, '-'));
+*/
 
 /*
 Output:
@@ -74,17 +80,20 @@ Output:
 Pad this----
 */
 
+/* ----Solution----
 string paymentId = "769C";
 
 var formattedLine = paymentId.PadRight(6);
 
 Console.WriteLine(formattedLine);
+*/
 
 /*
 Output:
 769C
 */
 
+/* ----Solution----
 string paymentId = "769C";
 string payeeName = "Mr. Stephen Ortega";
 string paymentAmount = "$5,000.00";
@@ -95,6 +104,7 @@ formattedLine += paymentAmount.PadLeft(10);
 
 Console.WriteLine("1234567890123456789012345678901234567890");
 Console.WriteLine(formattedLine);
+*/
 
 /*
 Output:
@@ -118,6 +128,109 @@ There's a few important takeaways from this unit.
 - The += operator concatenates a new string on the right to the existing string on the left.
 */
 
+// -----------------------------------------------------------------------------------------------------
+
+// Challenge to apply string interpolation to form a letter
+
+/*
+For the sales and marketing company's newest investment products, you send thousands of personalized 
+letters to the company's existing clients. Your job is to write C# code to merge personalized 
+information about the customer. The letter contains information like their existing portfolio and 
+compares their current returns to projected returns if they were to invest in using the new products.
+
+The writers have decided on the following example marketing message. Here's the desired output 
+(using fictitious customer account data).
+*/
+
+/*
+Expected Output:
+
+Dear Ms. Barros,
+As a customer of our Magic Yield offering we are excited to tell you about a new financial product that would dramatically increase your return.
+
+Currently, you own 2,975,000.00 shares at a return of 12.75%.
+
+Our new product, Glorious Future offers a return of 13.13%.  Given your current volume, your potential profit would be ¤63,000,000.00.
+
+Here's a quick comparison:
+
+Magic Yield         12.75%   $55,000,000.00      
+Glorious Future     13.13%   $63,000,000.00
+*/
+
+
+
+
+
+/*
+Expected Output:
+
+Dear Ms. Barros,
+As a customer of our Magic Yield offering we are excited to tell you about a new financial product that would dramatically increase your return.
+
+Currently, you own 2,975,000.00 shares at a return of 12.75%.
+
+Our new product, Glorious Future offers a return of 13.13%.  Given your current volume, your potential profit would be $63,000,000.00.
+
+Here's a quick comparison:
+
+Magic Yield         12.75%   $55,000,000.00      
+Glorious Future     13.13%   $63,000,000.00
+*/
+
+// Starting Data:
+
+string customerName = "Ms. Barros";
+
+string currentProduct = "Magic Yield";
+int currentShares = 2975000;
+decimal currentReturn = 0.1275m;
+decimal currentProfit = 55000000.0m;
+
+string newProduct = "Glorious Future";
+decimal newReturn = 0.13125m;
+decimal newProfit = 63000000.0m;
+
+// Your logic below
+
+// ----Solution 1----
+Console.WriteLine($"Dear {customerName},");
+Console.WriteLine($"As a customer of our {currentProduct} offering we are excited to tell you about a new financial product that would dramatically increase your return.");
+Console.WriteLine($"Currently, you own {currentShares:N3} shares at a return of {currentReturn:P2}.");
+Console.WriteLine($"Our new product, {newProduct} offers a return of {newReturn:P2}.");
+Console.WriteLine($"Given your current volume, your potential profit would be {newProfit:C}.");
+
+Console.WriteLine("Here's a quick comparison:\n");
+
+string comparisonMessage = "";
+
+comparisonMessage = $"{currentProduct,-20} {currentReturn,10:P2} {currentProfit,20:C}";
+comparisonMessage += $"\n{newProduct,-20} {newReturn,10:P2} {newProfit,20:C}";
+
+Console.WriteLine(comparisonMessage);
+
+
+/* ----Solution 2----
+Console.WriteLine($"Dear {customerName},");
+Console.WriteLine($"As a customer of our {currentProduct} offering we are excited to tell you about a new financial product that would dramatically increase your return.\n");
+Console.WriteLine($"Currently, you own {currentShares:N} shares at a return of {currentReturn:P}.\n");
+Console.WriteLine($"Our new product, {newProduct} offers a return of {newReturn:P}.  Given your current volume, your potential profit would be {newProfit:C}.\n");
+
+Console.WriteLine("Here's a quick comparison:\n");
+
+string comparisonMessage = "";
+
+comparisonMessage = currentProduct.PadRight(20);
+comparisonMessage += String.Format("{0:P}", currentReturn).PadRight(10);
+comparisonMessage += String.Format("{0:C}", currentProfit).PadRight(20);
+
+comparisonMessage += "\n";
+comparisonMessage += newProduct.PadRight(20);
+comparisonMessage += String.Format("{0:P}", newReturn).PadRight(10);
+comparisonMessage += String.Format("{0:C}", newProfit).PadRight(20);
+
+Console.WriteLine(comparisonMessage);
+*/
 
 
 

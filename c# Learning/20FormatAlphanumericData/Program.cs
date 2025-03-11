@@ -53,7 +53,7 @@ Console.WriteLine($"{first} {first} {first}!"); // Hello Hello Hello!
 
 decimal price = 123.45m;
 int discount = 50;
-Console.WriteLine($"Price: {price:C} (Save {discount:C})"); 
+Console.WriteLine($"Price: {price:C} (Save {discount:C})");
 // Price: $123.45 (Save $50.00)
 
 // --------------------------------------------------------------------------------
@@ -102,7 +102,6 @@ Console.WriteLine($"Measurement: {measurement:N4} units");
 // Measurement: 123,456.7891 units
 
 // --------------------------------------------------------------------------------
-
 /*
     ===Formatting Percentages===
     
@@ -139,7 +138,7 @@ decimal salePrice = 59.99m;
 
 string yourDiscount = String.Format("You saved {0:C2} off the regular {1:C2} price. ", (price - salePrice), price);
 
-yourDiscount += $"A discount of {((price - salePrice)/price):P2}!"; //inserted
+yourDiscount += $"A discount of {((price - salePrice) / price):P2}!"; //inserted
 Console.WriteLine(yourDiscount);
 // You saved $7.56 off the regular $67.55 price. A discount of 11.19%!
 
