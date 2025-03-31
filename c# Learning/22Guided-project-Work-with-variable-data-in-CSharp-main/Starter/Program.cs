@@ -133,53 +133,73 @@ do
             break;
 
         case "2":
-            // Display all dogs with a specified characteristic
-            string dogCharacteristic = "";
+            // Display all dogs with specified characteristics (multi-term support)
+            string rawInput = "";
 
-            while (dogCharacteristic == "")
+            while (string.IsNullOrWhiteSpace(rawInput))
             {
-                // have the user enter physical characteristics to search for
-                Console.WriteLine($"\nEnter one desired dog characteristics to search for");
+                Console.WriteLine("\nEnter dog characteristics to search for separated by commas");
                 readResult = Console.ReadLine();
                 if (readResult != null)
                 {
-                    dogCharacteristic = readResult.ToLower().Trim();
+                    rawInput = readResult.Trim().ToLower();
                 }
             }
 
-            bool noMatchesDog = true;
-            string dogDescription = "";
+            // Split and clean search terms
+            string[] searchTerms = rawInput.Split(',');
+            for (int i = 0; i < searchTerms.Length; i++)
+            {
+                searchTerms[i] = searchTerms[i].Trim();
+            }
 
-            // #6 loop through the ourAnimals array to search for matching animals
+            Array.Sort(searchTerms); // sort alphabetically
+
+            bool anyMatchesFound = false;
+
             for (int i = 0; i < maxPets; i++)
             {
-                bool dogMatch = true;
-
                 if (ourAnimals[i, 1].Contains("dog"))
                 {
-                    if (dogMatch == true)
+                    string dogDesc = ourAnimals[i, 4].ToLower() + " " + ourAnimals[i, 5].ToLower();
+                    string dogNickname = ourAnimals[i, 3];
+
+                    List<string> matchedTerms = new();
+
+                    foreach (string term in searchTerms)
                     {
-                        // #7 Search combined descriptions and report results
-                        dogDescription = ourAnimals[i, 4] + "\n" + ourAnimals[i, 5];
+                        Console.WriteLine($"searching...{term}");
 
-                        if (dogDescription.Contains(dogCharacteristic))
+                        if (!string.IsNullOrWhiteSpace(term) && dogDesc.Contains(term))
                         {
-                            Console.WriteLine($"\nOur dog {ourAnimals[i, 3]} is a match!");
-                            Console.WriteLine(dogDescription);
-
-                            noMatchesDog = false;
+                            Console.WriteLine($"Our dog {dogNickname} matches your search for {term}!");
+                            matchedTerms.Add(term);
                         }
+                    }
+
+                    if (matchedTerms.Count > 0)
+                    {
+                        // Display dog's info
+                        Console.WriteLine($"{dogNickname} ({ourAnimals[i, 0]})");
+                        Console.WriteLine(ourAnimals[i, 4]);
+                        Console.WriteLine(ourAnimals[i, 5]);
+
+                        anyMatchesFound = true;
                     }
                 }
             }
 
-            if (noMatchesDog)
+            if (!anyMatchesFound)
             {
-                Console.WriteLine("None of our dogs are a match found for: " + dogCharacteristic);
+                Console.WriteLine($"\nNone of our dogs are a match for: {string.Join(", ", searchTerms)}");
             }
 
             Console.WriteLine("\n\rPress the Enter key to continue");
             readResult = Console.ReadLine();
+
+            break;
+
+        default:
             break;
     }
 
